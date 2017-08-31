@@ -2,6 +2,7 @@ var gulp = require("gulp");
 var sass = require("gulp-sass");
 var htmlImport = require("gulp-html-import");
 var browserSync = require('browser-sync').create();
+var tap = require("gulp-tap");
 
 gulp.task('default', function(){
   browserSync.init({server:"dist/"});
@@ -21,3 +22,5 @@ gulp.task('html', function () {
         .pipe(gulp.dest('dist'))
         .pipe(browserSync.stream());
   });
+
+  
