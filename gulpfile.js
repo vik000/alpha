@@ -40,6 +40,6 @@ gulp.task('html', function () {
                         })
       }))
       .pipe(buffer()) //transforma de nuevo a buffer (es un require aparte) para que podamos seguir trabajando con ello.
-      .pipe(gulp.dest('dist'))
+      .pipe(gulp.dest('dist/js'))
       .pipe(browserSync.stream());
   });
