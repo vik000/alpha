@@ -1,4 +1,5 @@
 // Aquí solo deberían ir imports:
-@import "components/example";
 @import "../../node_modules/bootstrap/scss/bootstrap";
- 
+
+//Los custom mejor aquí, para que pisen los componentes de librerías.
+@import "components/example";
