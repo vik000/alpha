@@ -5,6 +5,7 @@ var browserSync = require('browser-sync').create();
 var tap = require("gulp-tap");
 var browserify = require("browserify");
 var buffer = require("gulp-buffer");
+var sourcemaps = require("gulp-sourcemaps");
 
 gulp.task('default', function(){
   browserSync.init({server:"dist/"});
@@ -16,7 +17,9 @@ gulp.task('default', function(){
 
 gulp.task('sass', function(){
   gulp.src("src/scss/style.scss")
+  .pipe(sourcemaps.init())
   .pipe(sass().on("error", sass.logError))
+  .pipe(sourcemaps.write("./"))
   .pipe(gulp.dest("./dist/styles"))
   .pipe(browserSync.stream());
 });
@@ -32,7 +35,7 @@ gulp.task('html', function () {
     gulp.src("src/js/main.js")
       .pipe(tap(function(file){ //tenemos que usar tap para poder hacer funciones en cadena.
         //ahora vamos a reemplazar main.js por lo que nos devuelva browserify cuando le pasemos main.js (es decir, lo modifica)
-        file.contents = browserify(file.path)
+        file.contents = browserify(file.path, {debug:true})
                         .transform("babelify", {presets:["es2015"]}) //esto traduce el código de ES6 a ES5
                         .bundle() //esto compila el archivo (es lo que junta/concatena todos los archivos)
                         .on("error", function(error){
@@ -40,6 +43,8 @@ gulp.task('html', function () {
                         })
       }))
       .pipe(buffer()) //transforma de nuevo a buffer (es un require aparte) para que podamos seguir trabajando con ello.
+      .pipe(sourcemaps.init({loadMaps:true})) //esto carga los mapas
+      .pipe(sourcemaps.write("./")) //esto los guarda en la carpeta (en la misma, pero en otro archivo).
       .pipe(gulp.dest('dist/js'))
       .pipe(browserSync.stream());
   });

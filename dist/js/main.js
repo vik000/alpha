@@ -10257,5 +10257,8 @@ return jQuery;
 "use strict";
 
 var $ = require("jquery");
+console.log("hi");
 
-},{"jquery":1}]},{},[2]);
+},{"jquery":1}]},{},[2])
+
+//# sourceMappingURL=main.js.map
