@@ -27,7 +27,16 @@ gulp.task('sass', function(){
 
 gulp.task('html', function () {
     gulp.src('./src/index.html')
-        .pipe(htmlImport('src/components/')) //aquí debería ir gulpImport, pero con eso no sale y me dice que no está definido, mientras que com lo que jhay puesto sí que sale.
+        .pipe(htmlImport('src/components/'))
+        .pipe(gulp.dest('dist'))
+    gulp.src('./src/login.html')
+        .pipe(htmlImport('src/components/'))
+        .pipe(gulp.dest('dist'))
+    gulp.src('./src/register.html')
+        .pipe(htmlImport('src/components/'))
+        .pipe(gulp.dest('dist'))
+    gulp.src('./src/detail.html')
+        .pipe(htmlImport('src/components/'))
         .pipe(gulp.dest('dist'))
         .pipe(browserSync.stream());
   });
