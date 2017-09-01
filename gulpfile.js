@@ -6,8 +6,9 @@ var tap = require("gulp-tap");
 var browserify = require("browserify");
 var buffer = require("gulp-buffer");
 var sourcemaps = require("gulp-sourcemaps");
+var notify = require("gulp-notify");
 
-gulp.task('default', function(){
+gulp.task('default',["html","sass","js"], function(){
   browserSync.init({server:"dist/"});
   gulp.watch(["src/scss/*.scss","src/scss/**/*.scss"],["sass"]);
   gulp.watch(["src/*.html","src/**/*.html"],["html"]);
@@ -39,6 +40,7 @@ gulp.task('html', function () {
                         .transform("babelify", {presets:["es2015"]}) //esto traduce el código de ES6 a ES5
                         .bundle() //esto compila el archivo (es lo que junta/concatena todos los archivos)
                         .on("error", function(error){
+                          return notify().write(error);
                           //si tuviésemos notify, errores por notify, creo que no pasa nada por que esto esté en blanco.
                         })
       }))

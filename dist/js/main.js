@@ -14088,11 +14088,34 @@ return jQuery;
 },{}],3:[function(require,module,exports){
 'use strict';
 
-window.jQuery = window.$ = require('jquery');
-console.log($);
-var bootstrap = require('bootstrap/dist/js/bootstrap'); //Esto lo ponemos cuando instalemos bootstrap (que tiene que ser por npm). Con esto ya debería ir.
-console.log("hi");
+//$(document).ready(function(){
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 50) {
+        $('#back-to-top').fadeIn();
+    } else {
+        $('#back-to-top').fadeOut();
+    }
+});
+// scroll body to 0px on click
+$('#back-to-top').click(function () {
+    $('#back-to-top').tooltip('hide');
+    $('body,html').animate({
+        scrollTop: 0
+    }, 800);
+    return false;
+});
 
-},{"bootstrap/dist/js/bootstrap":1,"jquery":2}]},{},[3])
+$('#back-to-top').tooltip('show');
+
+//});
+
+},{}],4:[function(require,module,exports){
+'use strict';
+
+window.jQuery = window.$ = require('jquery');
+var bootstrap = require('bootstrap/dist/js/bootstrap'); //Esto lo ponemos cuando instalemos bootstrap (que tiene que ser por npm). Con esto ya debería ir.
+require("./backToTop");
+
+},{"./backToTop":3,"bootstrap/dist/js/bootstrap":1,"jquery":2}]},{},[4])
 
 //# sourceMappingURL=main.js.map
