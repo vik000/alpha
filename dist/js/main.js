@@ -14289,22 +14289,6 @@ function yHandler() {
 }
 window.addEventListener("scroll", yHandler);
 
-// function post() {
-//   $.ajax({
-//     type:"POST",
-//     url:"comments/",
-//     //beforeSend:
-//     success: comments =>{
-//       console.log("Yupi!!!", comments);
-//       //componemos el HTML con todos los artículos.
-//       }
-//     },
-//     error: response =>{
-//       console.error("NOOOOO",error);
-//     }
-//   });
-// }
-
 var bootstrap = require('bootstrap/dist/js/bootstrap'); //Esto lo ponemos cuando instalemos bootstrap (que tiene que ser por npm). Con esto ya debería ir.
 require("./backToTop");
 
