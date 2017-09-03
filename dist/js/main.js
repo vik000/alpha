@@ -14117,14 +14117,44 @@ window.jQuery = window.$ = require('jquery');
 
 $(document).ready(function () {
   ajax_articles();
+  ajax_comments();
 });
 
 function ajax_articles() {
   $.ajax({
     type: "GET",
     url: "articles/",
-    success: function success(response) {
-      console.log("Yupi!!!", response);
+    success: function success(books) {
+      console.log("Yupi!!!", books);
+      //componemos el HTML con todos los artículos.
+      var html = "";
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = books[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var book = _step.value;
+
+          html += "<article class=\"card\" style=\"width: 20rem;\">\n        <img class=\"card-img-top\" src=\"" + book.cover + "\" alt=\"Card image cap\">\n        <div class=\"card-block padding-in\">\n        <div class=\"card-stuff\">\n          <h4 class=\"card-title\" id=\"title\"><a href=\"detail.html\">" + book.title + "</a></h4>\n          <a href=\"detail.html\" id=\"likes\" class=\"btn btn-primary btn-sm btn-short\"><small><b>+" + book.likes + "</b></small></a>\n        </div>\n        <p class=\"card-text\">" + book.excerpt + "</p>\n        <div class=\"card-stuff\">\n          <p class=\"card-text\" id=\"author\"><small class=\"text-muted\">@" + book.author + " | 1h ago</small></p>\n          <p class=\"card-text\" id=\"comments\"><small class=\"text-muted\">" + book.comments + " coments</small></p>\n        </div>\n        </div>\n      </article>";
+        }
+        //Metermos todo el texto en el div que contiene las canciones:
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      $("#bookshelf").html(html);
     },
     error: function (_error) {
       function error(_x) {
@@ -14133,6 +14163,59 @@ function ajax_articles() {
 
       error.toString = function () {
         return _error.toString();
+      };
+
+      return error;
+    }(function (response) {
+      console.error("NOOOOO", error);
+    })
+  });
+}
+//console.log("después de ajax");
+
+function ajax_comments() {
+  $.ajax({
+    type: "GET",
+    url: "comments/",
+    success: function success(comments) {
+      console.log("Yupi!!!", comments);
+      //componemos el HTML con todos los artículos.
+      var html2 = "";
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = comments[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var comment = _step2.value;
+
+          html2 += "<div class=\"comment card-block\">\n                    <p>" + comment.text + "</p>\n                    <p><small>by @" + comment.name + "</small></p>\n                  </div>";
+        }
+        //Metermos todo el texto en el div que contiene las canciones:
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+
+      $("#allTheOthers").html(html2);
+    },
+    error: function (_error2) {
+      function error(_x2) {
+        return _error2.apply(this, arguments);
+      }
+
+      error.toString = function () {
+        return _error2.toString();
       };
 
       return error;
