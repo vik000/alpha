@@ -5574,6 +5574,9 @@ button.likes {
   font-size: 110%;
   line-height: 19px; }
 
+.liked {
+  background-color: #ADC073; }
+
 .back-to-top {
   cursor: pointer;
   position: fixed;

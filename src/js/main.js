@@ -32,10 +32,22 @@ function ajax_articles() {
       //WebStorage!!!:
       if (typeof(Storage) !== "undefined") {
           // Code for localStorage.
-          if (localStorage.getItem(`likes${book.id}`)) {
-              console.log(`likes${book.id}`);
+          let variable=`likes${book.id}`;
+          if (localStorage.getItem(variable)) {
+              console.log(variable+' | '+localStorage.getItem(variable));
+              if(localStorage.getItem(variable)=='0'){
+                $("#"+variable).removeClass("liked");
+              }else if (localStorage.getItem(variable)=='1') {
+                $("#"+variable).addClass("liked");
+              }
           } else {
               localStorage.setItem(`likes${book.id}`,'0');
+              console.log(variable+' | '+localStorage.getItem(variable));
+              if(localStorage.getItem(variable)=='0'){
+                $("#"+variable).removeClass("liked");
+              }else if (localStorage.getItem(variable)=='1') {
+                $("#"+variable).addClass("liked");
+              }
           }
       } else {
           // Sorry! No Web Storage support..
@@ -56,16 +68,21 @@ var $bookshelf=$("#bookshelf");
 $bookshelf.on("click","button", function(){
   let likes=$(this).attr('id');
   let stored = localStorage.getItem(likes);
-  console.log($(this).text().substring(1));
+  let valor=parseInt($(this).text().substring(1));
+  // console.log(valor+3);
   if(stored=='0'){
     localStorage.setItem(likes,'1');
     //y sumamos 1:
-
+    $(this).html("<small><b>+"+(valor+1)+"</b></small>");
+    $(this).toggleClass("liked");
+    console.log(localStorage.getItem(likes));
   }else if (stored == '1') {
     localStorage.setItem(likes,'0');
+    //y restamos 1:
+    $(this).html("<small><b>+"+(valor-1)+"</b></small>");
+    $(this).toggleClass("liked");
+    console.log(localStorage.getItem(likes));
   }
-
-
 });
 
 function ajax_comments() {
@@ -111,6 +128,23 @@ function yHandler(){
   status.innerHTML = contentHeight + " | " + yOffset;
 }
 window.addEventListener("scroll", yHandler);
+
+
+// function post() {
+//   $.ajax({
+//     type:"POST",
+//     url:"comments/",
+//     //beforeSend:
+//     success: comments =>{
+//       console.log("Yupi!!!", comments);
+//       //componemos el HTML con todos los artículos.
+//       }
+//     },
+//     error: response =>{
+//       console.error("NOOOOO",error);
+//     }
+//   });
+// }
 
 var bootstrap = require('bootstrap/dist/js/bootstrap'); //Esto lo ponemos cuando instalemos bootstrap (que tiene que ser por npm). Con esto ya debería ir.
 require("./backToTop");

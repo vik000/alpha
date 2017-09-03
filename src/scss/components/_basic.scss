@@ -1,5 +1,6 @@
 $lineHeight: 20px/14px;
 $footerHeight:60px;
+$liked:#ADC073;
 
 body{
   background-color: lightblue;
@@ -27,4 +28,8 @@ button.likes{
   height: 32px;
   font-size: 110%;
   line-height: 19px;
+}
+
+.liked{
+  background-color:$liked;
 }
