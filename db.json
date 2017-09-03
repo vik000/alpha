@@ -68,7 +68,7 @@
       "text":"aquí iría el texto del artículo",
       "postDate":"04/08/2017 20:45:00",
       "comments":"1",
-      "likes":"0"
+      "likes":"10"
     },
     {"id":8,
       "title":"The Raven",
@@ -111,6 +111,30 @@
       "text":"Does this guy still write things?"
     },
     {"id":3,
+      "name":"Gela",
+      "text":"I have to agree with the author, this book helped me a lot."
+    },
+    {"id":4,
+      "name":"john",
+      "text":"This book is truly awesome!"
+    },
+    {"id":5,
+      "name":"mike",
+      "text":"Does this guy still write things?"
+    },
+    {"id":6,
+      "name":"Gela",
+      "text":"I have to agree with the author, this book helped me a lot."
+    },
+    {"id":7,
+      "name":"john",
+      "text":"This book is truly awesome!"
+    },
+    {"id":8,
+      "name":"mike",
+      "text":"Does this guy still write things?"
+    },
+    {"id":9,
       "name":"Gela",
       "text":"I have to agree with the author, this book helped me a lot."
     }

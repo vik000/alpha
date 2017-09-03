@@ -5569,7 +5569,7 @@ div.dropdown > a#dropdownMenuLink {
   display: flex;
   justify-content: space-between; }
 
-a#likes {
+button.likes {
   height: 32px;
   font-size: 110%;
   line-height: 19px; }
