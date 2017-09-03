@@ -14110,11 +14110,42 @@ $('#back-to-top').tooltip('show');
 //});
 
 },{}],4:[function(require,module,exports){
-'use strict';
+"use strict";
 
 window.jQuery = window.$ = require('jquery');
+//require("./popper");
+
+$(document).ready(function () {
+  ajax_articles();
+});
+
+function ajax_articles() {
+  $.ajax({
+    type: "GET",
+    url: "articles/",
+    success: function success(response) {
+      console.log("Yupi!!!", response);
+    },
+    error: function (_error) {
+      function error(_x) {
+        return _error.apply(this, arguments);
+      }
+
+      error.toString = function () {
+        return _error.toString();
+      };
+
+      return error;
+    }(function (response) {
+      console.error("NOOOOO", error);
+    })
+  });
+}
+//console.log("después de ajax");
+
 var bootstrap = require('bootstrap/dist/js/bootstrap'); //Esto lo ponemos cuando instalemos bootstrap (que tiene que ser por npm). Con esto ya debería ir.
 require("./backToTop");
+//require("./loadOnScroll");
 
 },{"./backToTop":3,"bootstrap/dist/js/bootstrap":1,"jquery":2}]},{},[4])
 

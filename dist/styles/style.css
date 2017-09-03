@@ -5555,6 +5555,25 @@ a.text-dark:focus, a.text-dark:hover {
 body {
   background-color: lightblue; }
 
+.push-down {
+  margin-top: 20px;
+  margin-bottom: 70px; }
+
+div.dropdown > a#dropdownMenuLink {
+  line-height: 31px; }
+
+.padding-in {
+  padding: 15px; }
+
+.card-stuff {
+  display: flex;
+  justify-content: space-between; }
+
+a#likes {
+  height: 32px;
+  font-size: 110%;
+  line-height: 19px; }
+
 .back-to-top {
   cursor: pointer;
   position: fixed;
