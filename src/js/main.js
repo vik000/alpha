@@ -40,6 +40,8 @@ function ajax_articles() {
                 $("#"+variable).removeClass("liked");
               }else if (localStorage.getItem(variable)=='1') {
                 $("#"+variable).addClass("liked");
+                let valor=parseInt($("#"+variable).text().substring(1));
+                $("#"+variable).html("<small><b>+"+(valor+1)+"</b></small>");
               }
           } else {
               localStorage.setItem(`likes${book.id}`,'0');
@@ -48,9 +50,11 @@ function ajax_articles() {
                 $("#"+variable).removeClass("liked");
               }else if (localStorage.getItem(variable)=='1') {
                 $("#"+variable).addClass("liked");
+                let valor=parseInt($("#"+variable).text().substring(1));
+                $("#"+variable).html("<small><b>+"+(valor+1)+"</b></small>");
               }
           }
-        }, 2000);
+        }, 1000);
 
       } else {
           // Sorry! No Web Storage support..

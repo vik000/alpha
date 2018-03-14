@@ -14148,6 +14148,8 @@ function ajax_articles() {
                   $("#" + variable).removeClass("liked");
                 } else if (localStorage.getItem(variable) == '1') {
                   $("#" + variable).addClass("liked");
+                  var valor = parseInt($("#" + variable).text().substring(1));
+                  $("#" + variable).html("<small><b>+" + (valor + 1) + "</b></small>");
                 }
               } else {
                 localStorage.setItem("likes" + book.id, '0');
@@ -14156,9 +14158,11 @@ function ajax_articles() {
                   $("#" + variable).removeClass("liked");
                 } else if (localStorage.getItem(variable) == '1') {
                   $("#" + variable).addClass("liked");
+                  var _valor = parseInt($("#" + variable).text().substring(1));
+                  $("#" + variable).html("<small><b>+" + (_valor + 1) + "</b></small>");
                 }
               }
-            }, 2000);
+            }, 1000);
           } else {
             // Sorry! No Web Storage support..
             console.log("WebStorage unavailable in this browser");
