@@ -14133,34 +14133,40 @@ function ajax_articles() {
       var _iteratorError = undefined;
 
       try {
-        for (var _iterator = books[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var _loop = function _loop() {
           var book = _step.value;
 
           html += "<article class=\"card\" style=\"width: 20rem;\">\n        <img class=\"card-img-top\" src=\"" + book.cover + "\" alt=\"Card image cap\">\n        <div class=\"card-block padding-in\">\n        <div class=\"card-stuff\">\n          <h4 class=\"card-title title\" id=\"title\"><a href=\"detail.html\">" + book.title + "</a></h4>\n          <button id=\"likes" + book.id + "\" type=\"button\" class=\"btn btn-primary btn-sm btn-short likes\"><small><b>+" + book.likes + "</b></small></button>\n        </div>\n        <p class=\"card-text\">" + book.excerpt + "</p>\n        <div class=\"card-stuff\">\n          <p class=\"card-text\" id=\"author\"><small class=\"text-muted\">@" + book.author + " | 1h ago</small></p>\n          <p class=\"card-text\" id=\"comments\"><small class=\"text-muted\">" + book.comments + " coments</small></p>\n        </div>\n        </div>\n      </article>";
           //WebStorage!!!:
           if (typeof Storage !== "undefined") {
-            // Code for localStorage.
-            var variable = "likes" + book.id;
-            if (localStorage.getItem(variable)) {
-              console.log(variable + ' | ' + localStorage.getItem(variable));
-              if (localStorage.getItem(variable) == '0') {
-                $("#" + variable).removeClass("liked");
-              } else if (localStorage.getItem(variable) == '1') {
-                $("#" + variable).addClass("liked");
+            setTimeout(function () {
+              // Code for localStorage.
+              var variable = "likes" + book.id;
+              if (localStorage.getItem(variable)) {
+                console.log(variable + ' | ' + localStorage.getItem(variable));
+                if (localStorage.getItem(variable) == '0') {
+                  $("#" + variable).removeClass("liked");
+                } else if (localStorage.getItem(variable) == '1') {
+                  $("#" + variable).addClass("liked");
+                }
+              } else {
+                localStorage.setItem("likes" + book.id, '0');
+                console.log(variable + ' | ' + localStorage.getItem(variable));
+                if (localStorage.getItem(variable) == '0') {
+                  $("#" + variable).removeClass("liked");
+                } else if (localStorage.getItem(variable) == '1') {
+                  $("#" + variable).addClass("liked");
+                }
               }
-            } else {
-              localStorage.setItem("likes" + book.id, '0');
-              console.log(variable + ' | ' + localStorage.getItem(variable));
-              if (localStorage.getItem(variable) == '0') {
-                $("#" + variable).removeClass("liked");
-              } else if (localStorage.getItem(variable) == '1') {
-                $("#" + variable).addClass("liked");
-              }
-            }
+            }, 2000);
           } else {
             // Sorry! No Web Storage support..
             console.log("WebStorage unavailable in this browser");
           }
+        };
+
+        for (var _iterator = books[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          _loop();
         }
         //Metermos todo el texto en el div que contiene las canciones:
       } catch (err) {

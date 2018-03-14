@@ -31,6 +31,7 @@ function ajax_articles() {
       </article>`;
       //WebStorage!!!:
       if (typeof(Storage) !== "undefined") {
+        setTimeout(function(){
           // Code for localStorage.
           let variable=`likes${book.id}`;
           if (localStorage.getItem(variable)) {
@@ -49,6 +50,8 @@ function ajax_articles() {
                 $("#"+variable).addClass("liked");
               }
           }
+        }, 2000);
+
       } else {
           // Sorry! No Web Storage support..
           console.log("WebStorage unavailable in this browser");
