@@ -14287,7 +14287,7 @@ function yHandler() {
   var status = document.getElementById('status');
   status.innerHTML = contentHeight + " | " + yOffset;
 }
-window.addEventListener("scroll", yHandler);
+// window.addEventListener("scroll", yHandler);
 
 var bootstrap = require('bootstrap/dist/js/bootstrap'); //Esto lo ponemos cuando instalemos bootstrap (que tiene que ser por npm). Con esto ya debería ir.
 require("./backToTop");
